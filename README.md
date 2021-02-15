@@ -39,6 +39,8 @@ On génère un `jar` du projet.
 mvn package
 ```
 
+bonjour
+
 Cette commande crée un répertoire `target` contenant les résultats de la construction du projet.
 Ce répertoire ne doit pas être ajouté au dépôt git.
 On ajoute donc un fichier `.gitignore` à partir du modèle se trouvant sur [github](https://raw.githubusercontent.com/github/gitignore/master/Maven.gitignore).
