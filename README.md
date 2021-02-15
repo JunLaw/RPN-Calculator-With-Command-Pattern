@@ -39,7 +39,7 @@ On génère un `jar` du projet.
 mvn package
 ```
 
-bonjour
+
 
 Cette commande crée un répertoire `target` contenant les résultats de la construction du projet.
 Ce répertoire ne doit pas être ajouté au dépôt git.
@@ -191,3 +191,17 @@ Cette [extension]() apporte un syntaxe plus lisible pour les tests JUnit.
 ```
 
 ### Étape 4 : implémenter la classe `Account` et les tests unitaires
+
+Exercices 3.1
+
+1.Cette classe respecte-t-elle SRP?
+
+La classe ne respecte pas le Single Responsibility Programm. La classe calcule et affiche les coordonées d'un employé, or la classe peut avoir deux raison de changer, soit le salaire change soit les coordonées change ou le format des coordonnées peuvent changer egalement.
+
+2.Si la méthode de calcul change il faut modifier les attributs de la classe mais pas l'affichage des coordonées
+
+3. Si l'affichage est dans un CSV il faudra faire appel à une fonction de lecture I/O ce qui viole le principe de SRP
+
+4. pour que SRP Soit respecté il faut séparé les coordonées des Employé ainsi que leur calcul de salaire.
+
+
