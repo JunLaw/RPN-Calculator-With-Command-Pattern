@@ -22,5 +22,8 @@ public class Entreprise {
             System.out.println(listeEmployes.get(i).calculSalaire());
         }
     }
-    
+
+    public void ajouter(Employe e){
+        listeEmployes.add(e);
+    }
 }
