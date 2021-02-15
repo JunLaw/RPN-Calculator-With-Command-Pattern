@@ -204,4 +204,8 @@ La classe ne respecte pas le Single Responsibility Programm. La classe calcule e
 
 4. pour que SRP Soit respecté il faut séparé les coordonées des Employé ainsi que leur calcul de salaire.
 
+Exercice 3.2
+
+fichier employe.java
+
 
