@@ -217,3 +217,5 @@ Exercice 3.4
 
 2.si on modifie la méthode fax on devra recompiler toutes l'interface Printer et toutes les methodes associées, il suffit donc de séparer toutes les methode dans une interfce chacune.
 
+3.Dossier Printer
+
