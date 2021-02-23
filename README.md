@@ -208,4 +208,12 @@ Exercice 3.2
 
 fichier employe.java
 
+Exercice 3.3
+
+
+Exercice 3.4
+
+1.L'interface Printer contient trop de methode qui sont independante entre elle mais fait que la classe simplePrinter depends de toute les methodes dans cette interface de manière inutile
+
+2.si on modifie la méthode fax on devra recompiler toutes l'interface Printer et toutes les methodes associées, il suffit donc de séparer toutes les methode dans une interfce chacune.
 
