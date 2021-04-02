@@ -1,4 +1,5 @@
 package fr.uvsq.poo.annuaire;
 
-public class Groupe {
+public interface Groupe {
+    public void print();
 }

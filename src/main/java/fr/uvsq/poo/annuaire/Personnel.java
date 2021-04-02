@@ -2,13 +2,16 @@ package fr.uvsq.poo.annuaire;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Map;
 
-public class Personnel {
+public class Personnel implements Groupe {
     private String nom;
     private String prenom;
     private String fonction;
     private LocalDate dateNaissance;
     private HashMap<String,Integer> numTels;
+
+
 
     public static class Builder{
         private String nom;
@@ -42,5 +45,13 @@ public class Personnel {
         fonction = builder.fonction;
         dateNaissance = builder.dateNaissance;
         numTels = builder.numTels;
+    }
+
+    @Override
+    public void print() {
+        System.out.println(nom + " " + prenom + " " + fonction + " " + dateNaissance);
+        for (Map.Entry mapentry : numTels.entrySet()) {
+            System.out.println(mapentry.getKey() + " | " + mapentry.getValue());
+        }
     }
 }
