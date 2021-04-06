@@ -1,10 +1,11 @@
 package fr.uvsq.poo.RPN;
 
-public class apOP implements Command{
-    private MoteurRPN mot;
-    private String str;
-    private int nbr1;
-    private int nbr2;
+public class apOP implements Command,Cloneable{
+    protected MoteurRPN mot;
+    protected String str;
+    private int result;
+    protected int nbr1;
+    protected int nbr2;
     public apOP(MoteurRPN mot,String str){
         this.mot = mot;
         this.str = str;
@@ -13,22 +14,28 @@ public class apOP implements Command{
         this.mot = mot;
 
     }
-    public void setStr(String str) {
-        this.str = str ;
-    }
+
+     protected int operate(int nbr1,int nbr2){
+        this.nbr1 = nbr1;
+        this.nbr2 = nbr2;
+        return 0;}
 
     @Override
     public void execute() {
-        this.mot.apOP(str);
+        this.mot.apOP(this);
     }
 
     @Override
     public void modify(String avr) {
-        setStr(avr);
+       this.str = avr;
 
     }
 
-    public void modify(int nbr1,int nbr2){
+    public void setResult(int result) {
+        this.result = result;
+    }
+
+    public void modify(int nbr1, int nbr2){
         this.nbr1 = nbr1;
         this.nbr2 = nbr2;
     }
@@ -36,5 +43,9 @@ public class apOP implements Command{
     @Override
     public void undo() {
         this.mot.apOPUndo(nbr1,nbr2);
+    }
+
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

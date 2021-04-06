@@ -20,7 +20,7 @@ public class MoteurRPN extends Interpreteur {
        stackRPN.add(num);
     }
 
-    public Boolean apOP(String op){
+    public Boolean apOP(apOP apOP){
         if(stackRPN != null) {
             history.add((Stack<Integer>) stackRPN.clone());
         }
@@ -28,31 +28,19 @@ public class MoteurRPN extends Interpreteur {
             System.out.println("not enough number in stack");
             return false;
         }
-        switch(op){
-            case "+":
-                stackRPN.push(stackRPN.pop() + stackRPN.pop());
-                break;
-            case "-":
-                stackRPN.push(stackRPN.pop() - stackRPN.pop());
-                break;
-            case "/":
-                stackRPN.push(stackRPN.pop() / stackRPN.pop());
-                break;
-            case "*":
-                stackRPN.push(stackRPN.pop() * stackRPN.pop());
-                break;
-            default:
-                System.out.println("not an operand");
-                break;
-        }
+
+        int op1 = stackRPN.pop();
+        int op2 = stackRPN.pop();
+        stackRPN.push(apOP.operate(op1,op2));
+
     return true;
     }
 
     public boolean apOPUndo(int nbr1,int nbr2){
         /*pop le dernier nombre reinserer les deux derniers int */
         stackRPN.pop();
-        stackRPN.push(nbr1);
         stackRPN.push(nbr2);
+        stackRPN.push(nbr1);
         return true;
     }
 

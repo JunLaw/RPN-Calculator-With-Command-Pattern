@@ -22,31 +22,35 @@ public class SaisieRPN {
         }
     }
 
-
     public boolean read(){
         String str = new String(" ");
        while(!str.equals("")){
                 str = scan.nextLine();
                 if(str.equals("+") || str.equals("-") || str.equals("*") || str.equals("/") )
                 {
-                    in.modify("apOP",str,in.get("apOP"));
-                    in.execute("apOP");
-                    //in.execute("retOP");
+                    if(str.equals("+")){
+                        in.execute("Plus");
+
+                    }else if(str.equals("-")){
+                        in.execute("Minus");
+                    }
+                    else if(str.equals("*")){
+                        in.execute("Times");
+                    }
+                    else if(str.equals("/")){
+                        in.execute("Divide");
+                    }
+
+
                 }
                 else if(SaisieRPN.isNumeric(str))
                 {
-                    //System.out.print(str);
                     in.modify("regOP",str,in.get("regOP"));
                     in.execute("regOP");
-                    //in.execute("retOP");
-
 
                 }else{
                     if(str.equals("undo")){
-                    //in.execute("retOP");
                     in.execute("undo");
-                    //rpn.regOPUndo();
-                    //in.execute("retOP");
                     }else if(str.equals("exit")){
                         in.execute("retOP");
                         in.execute("exit");
@@ -60,6 +64,7 @@ public class SaisieRPN {
                 str.replace(str," ");
        }
        return true;
+
     }
 
 

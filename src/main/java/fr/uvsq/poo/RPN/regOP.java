@@ -1,6 +1,6 @@
 package fr.uvsq.poo.RPN;
 
-public class regOP implements Command {
+public class regOP implements Command,Cloneable {
     private MoteurRPN mot;
     private int num;
     public regOP(MoteurRPN mot,int num){
@@ -30,5 +30,9 @@ public class regOP implements Command {
 
     public int getNum() {
         return num;
+    }
+
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

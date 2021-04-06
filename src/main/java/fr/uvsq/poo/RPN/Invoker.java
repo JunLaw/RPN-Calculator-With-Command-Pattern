@@ -1,13 +1,14 @@
 package fr.uvsq.poo.RPN;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Invoker {
     private HashMap<String,Command> commands = new HashMap<>();
-    private List<Command> history = new ArrayList<Command>();
+    private List<Command> history = new ArrayList<>();
 
     public void register(String msgCmd,Command cmd){
         commands.put(msgCmd,cmd);
@@ -15,50 +16,61 @@ public class Invoker {
 
 
 
-    public void execute(String msgCmd){
-        Command command = commands.get(msgCmd);
+    public void execute(String msgCmd) {
+        HashMap<String, Command> tempCmd = (HashMap<String, Command>) commands.clone();
+
+        Command command = tempCmd.get(msgCmd);
         int i = 1;
-        int j = 0;
-        if(msgCmd == "undo"){
-        while(i == 1){
-            System.out.println("i = " + i);
-            System.out.println("j = " + j);
-            Command teste = this.history.get(history.size()-1-j);
-            //System.out.println(teste.getClass().getName());
+
+        int undoCount = 0;
+        if (msgCmd == "undo")
+        {
+
+            //System.out.println("i = " + i);
+            //System.out.println("j = " + j);
+            Command teste = this.history.get(history.size() - 1);
+            remove();
+            System.out.println(teste.getClass().getName());
             if (teste.getClass().getName().contains("regOP")) {
                 get("regOP").undo();
-                i = 0;
-            } else if (teste.getClass().getName().contains("apOP")) {
-                Command cmd1 = this.history.get(history.size()-2-j);
-                Command cmd2 = this.history.get(history.size()-3-j);
-                System.out.println(cmd1.getClass().getName());
-                System.out.println(cmd2.getClass().getName());
-                regOP cmd11 = (regOP) cmd1;
-                regOP cmd22 = (regOP) cmd2;
-                int nbr1 = cmd11.getNum();
-                int nbr2 = cmd22.getNum();
-                System.out.println("gathered 1 = " + nbr1);
-                System.out.println("gathered 2 = " + nbr2);
-                apOP ap = (apOP) get("apOP");
-                ap.modify(nbr1,nbr2);
-                ap.undo();
-                i = 0;
+
+            } else if (teste.getClass().getName().contains("Plus") || teste.getClass().getName().contains("Minus") || teste.getClass().getName().contains("Times") || teste.getClass().getName().contains("Divide")) {
+                teste.undo();
+
             } else {
-                i = 1;
-                j++;
+                //remove();
+
             }
-        }
-            j = 0;
+
         }else {
             if (command == null) {
                 throw new IllegalStateException("no command registered" + msgCmd);
             }
-            if(!command.getClass().getName().contains("retOP")) {
-
-                this.history.add(command);
-            }
             command.execute();
+            if(!command.getClass().getName().contains("retOP")) {
+                if(command.getClass().getName().contains("Plus") || command.getClass().getName().contains("Minus") || command.getClass().getName().contains("Times") || command.getClass().getName().contains("Divide") ){
+                    apOP tmp = (apOP) tempCmd.get(msgCmd);
+                    apOP tm = null;
+                    try {
+                        tm = (apOP) ((apOP) tempCmd.get(msgCmd)).clone();
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+                    this.history.add(tm);
+                }else {
+                    regOP tmp = (regOP) tempCmd.get(msgCmd);
+                    regOP tm = null;
+                    try {
+                        tm = (regOP) tmp.clone();
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+
+                    this.history.add(tm);
+                }
+            }
         }
+
     }
 
     public void remove(){
@@ -77,7 +89,8 @@ public class Invoker {
     }
 
     public void modify(String name,String avr,Command cmd){
-        Command a = commands.get(name);
+        HashMap<String,Command> tempCmd = (HashMap<String, Command>) commands.clone();
+        Command a = tempCmd.get(name);
         a.modify(avr);
         commands.remove(name);
         commands.put(name, a);

@@ -8,8 +8,14 @@ public class CalculatriceRPN {
         Command retOP = new retOP(motRPN);
         Command regOP = new regOP(motRPN);
         Command exit = new Exit(motRPN);
-
-        in.register("apOP",apOP);
+        Command plus = new Plus(motRPN);
+        Command minus = new Minus(motRPN);
+        Command times = new Times(motRPN);
+        Command divide = new Divide(motRPN);
+        in.register("Plus",plus);
+        in.register("Minus",minus);
+        in.register("Times",times);
+        in.register("Divide",divide);
         in.register("retOP",retOP);
         in.register("regOP",regOP);
         in.register("exit",exit);
