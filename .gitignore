@@ -14,3 +14,5 @@ buildNumber.properties
 # IntelliJ files
 .idea/
 maven-exemple.iml
+
+.DS_Store
