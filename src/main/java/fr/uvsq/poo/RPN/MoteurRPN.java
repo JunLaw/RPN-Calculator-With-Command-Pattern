@@ -23,4 +23,16 @@ public class MoteurRPN extends Interpreteur {
         stackRPN.push(nbr1);
         return true;
     }
+
+    public void regOP(int num){
+        if(stackRPN != null) {
+            history.add( stackRPN);
+        }
+        stackRPN.add(num);
+    }
+
+    public void regOPUndo(){
+        stackRPN.pop();
+    }
+
 }
