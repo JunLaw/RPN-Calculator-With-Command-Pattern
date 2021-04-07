@@ -35,4 +35,17 @@ public class MoteurRPN extends Interpreteur {
         stackRPN.pop();
     }
 
+    public Stack<Integer> retOP(){
+        Stack<Integer> cpy = new Stack<Integer>();
+        cpy = (Stack<Integer>) stackRPN.clone();
+        if(cpy.isEmpty()){
+            System.out.println("empty");
+            return stackRPN;
+        }
+        while(!cpy.isEmpty()){
+            System.out.println(cpy.pop());
+        }
+        return stackRPN;
+    }
+
 }
