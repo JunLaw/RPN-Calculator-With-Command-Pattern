@@ -24,6 +24,11 @@ public class apOP implements Command,Cloneable {
         this.mot.apOPUndo(nbr1,nbr2);
     }
 
+    @Override
+    public void modify(String avr) {
+
+    }
+
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }

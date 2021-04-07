@@ -12,7 +12,13 @@ public class Exit implements Command{
         this.mot.exit();
     }
 
-    
+
 
     public void undo(){}
+
+    @Override
+    public void modify(String avr) {
+
+
+    }
 }

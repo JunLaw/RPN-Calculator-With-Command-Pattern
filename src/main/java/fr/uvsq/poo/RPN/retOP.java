@@ -13,4 +13,9 @@ public class retOP implements Command{
     }
 
     public void undo(){}
+
+    @Override
+    public void modify(String avr) {
+        
+    }
 }

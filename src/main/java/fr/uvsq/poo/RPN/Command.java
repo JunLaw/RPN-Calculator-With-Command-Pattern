@@ -1,6 +1,7 @@
 package fr.uvsq.poo.RPN;
 
 public interface Command {
-    public void execute();
-    public void undo();
+    void execute();
+    void undo();
+    void modify(String avr);
 }

@@ -20,6 +20,11 @@ public class regOP implements Command,Cloneable {
         mot.regOPUndo();
     }
 
+    @Override
+    public void modify(String avr) {
+
+    }
+
     public int getNum() {
         return num;
     }
