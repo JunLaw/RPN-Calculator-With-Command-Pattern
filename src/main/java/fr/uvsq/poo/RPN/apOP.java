@@ -27,4 +27,9 @@ public class apOP implements Command,Cloneable {
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
+    protected int operate(int nbr1,int nbr2){
+        this.nbr1 = nbr1;
+        this.nbr2 = nbr2;
+        return 0;}
 }
