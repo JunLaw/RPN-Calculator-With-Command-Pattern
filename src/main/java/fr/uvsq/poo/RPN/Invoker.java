@@ -12,15 +12,59 @@ public class Invoker {
         commands.put(msgCmd,cmd);
     }
 
-    public void execute(String msgCmd){
+    public void execute(String msgCmd) {
         HashMap<String, Command> tempCmd = (HashMap<String, Command>) commands.clone();
-        Command command = tempCmd.get(msgCmd);
 
-        if (command == null) {
-            throw new IllegalStateException("no command registered" + msgCmd);
-        }else{
+        Command command = tempCmd.get(msgCmd);
+        int i = 1;
+
+        int undoCount = 0;
+        if (msgCmd == "undo")
+        {
+
+            //System.out.println("i = " + i);
+            //System.out.println("j = " + j);
+            Command teste = this.history.get(history.size() - 1);
+            remove();
+            System.out.println(teste.getClass().getName());
+            if (teste.getClass().getName().contains("regOP")) {
+                get("regOP").undo();
+
+            } else if (teste.getClass().getName().contains("Plus") || teste.getClass().getName().contains("Minus") || teste.getClass().getName().contains("Times") || teste.getClass().getName().contains("Divide")) {
+                teste.undo();
+
+            } else {
+                //remove();
+
+            }
+
+        }else {
+            if (command == null) {
+                throw new IllegalStateException("no command registered" + msgCmd);
+            }
             command.execute();
-            this.history.add(command);
+            if(!command.getClass().getName().contains("retOP")) {
+                if(command.getClass().getName().contains("Plus") || command.getClass().getName().contains("Minus") || command.getClass().getName().contains("Times") || command.getClass().getName().contains("Divide") ){
+                    apOP tmp = (apOP) tempCmd.get(msgCmd);
+                    apOP tm = null;
+                    try {
+                        tm = (apOP) ((apOP) tempCmd.get(msgCmd)).clone();
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+                    this.history.add(tm);
+                }else {
+                    regOP tmp = (regOP) tempCmd.get(msgCmd);
+                    regOP tm = null;
+                    try {
+                        tm = (regOP) tmp.clone();
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+
+                    this.history.add(tm);
+                }
+            }
         }
 
     }
