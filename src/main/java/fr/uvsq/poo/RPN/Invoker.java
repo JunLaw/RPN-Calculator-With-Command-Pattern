@@ -29,7 +29,13 @@ public class Invoker {
         this.history.remove(history.size()-1);
     }
 
-
+    public void modify(String name,String avr,Command cmd){
+        HashMap<String,Command> tempCmd = (HashMap<String, Command>) commands.clone();
+        Command a = tempCmd.get(name);
+        a.modify(avr);
+        commands.remove(name);
+        commands.put(name, a);
+    }
 
     public Command get(String name){
         return this.commands.get(name);
