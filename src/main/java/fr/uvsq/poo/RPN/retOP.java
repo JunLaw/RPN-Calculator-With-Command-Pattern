@@ -16,6 +16,6 @@ public class retOP implements Command{
 
     @Override
     public void modify(String avr) {
-        
+
     }
 }
