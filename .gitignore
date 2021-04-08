@@ -8,10 +8,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .settings
-rpncalc-rpn-andrianina-dylan/.settings
-rpncalc-rpn-andrianina-dylan/bin
-rpncalc-rpn-andrianina-dylan/.classpath
-rpncalc-rpn-andrianina-dylan/.project
+
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
