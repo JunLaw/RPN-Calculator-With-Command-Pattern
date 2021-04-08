@@ -3,7 +3,6 @@ package fr.uvsq.poo.RPN;
 public class apOP implements Command,Cloneable {
     protected MoteurRPN mot;
     protected String str;
-    private int result;
     protected int nbr1;
     protected int nbr2;
     public apOP(MoteurRPN mot,String str){
@@ -26,7 +25,7 @@ public class apOP implements Command,Cloneable {
 
     @Override
     public void modify(String avr) {
-
+        this.str = avr;
     }
 
     protected Object clone() throws CloneNotSupportedException {

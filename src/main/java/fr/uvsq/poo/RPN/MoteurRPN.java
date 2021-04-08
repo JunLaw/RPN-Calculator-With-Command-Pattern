@@ -4,12 +4,11 @@ import java.util.Stack;
 
 public class MoteurRPN extends Interpreteur {
     private Stack<Integer> stackRPN;
-    private Stack<Stack<Integer>> history;
     MoteurRPN(Invoker in)
     {
         super(in);
         stackRPN = new Stack<Integer>();
-        history = new Stack<Stack<Integer>>();
+
     }
 
     public Boolean apOP(apOP apOP){
@@ -25,9 +24,6 @@ public class MoteurRPN extends Interpreteur {
     }
 
     public void regOP(int num){
-        if(stackRPN != null) {
-            history.add( stackRPN);
-        }
         stackRPN.add(num);
     }
 
