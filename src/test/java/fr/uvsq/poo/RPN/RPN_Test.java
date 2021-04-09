@@ -12,20 +12,20 @@ public class RPN_test {
 	 public void setup() {		 
 		 Invoker in = new Invoker();
 		 MoteurRPN moteur = new MoteurRPN(in);
-		 Command apOP = new apOP(moteur);
-		 Command retOP = new retOP(moteur);
-		 Command regOP = new regOP(moteur);
+		 Command ApOP = new ApOP(moteur);
+		 Command retOP = new RetOP(moteur);
+		 Command regOP = new RegOP(moteur);
 		 Command exit = new Exit(moteur);
-		 apOP plus = new Plus(moteur);
-		 apOP minus = new Minus(moteur);
-		 apOP times = new Times(moteur);
-		 apOP divide = new Divide(moteur);
+		 ApOP plus = new Plus(moteur);
+		 ApOP minus = new Minus(moteur);
+		 ApOP times = new Times(moteur);
+		 ApOP divide = new Divide(moteur);
 		 in.register("Plus",plus);
 		 in.register("Minus",minus);
 		 in.register("Times",times);
 		 in.register("Divide",divide);
-		 in.register("retOP",retOP);
-		 in.register("regOP",regOP);
+		 in.register("RetOP",retOP);
+		 in.register("RegOP",regOP);
 		 in.register("exit",exit);
 		 Stack<Integer> verif_stack = new Stack<Integer>();
 	  }
@@ -34,7 +34,7 @@ public class RPN_test {
 	 public void test_add() {
 		 Invoker in = new Invoker();
 		 MoteurRPN moteur = new MoteurRPN(in);
-		 apOP plus = new Plus(moteur);
+		 ApOP plus = new Plus(moteur);
 		 in.register("Plus",plus);
 		 moteur.regOP(18);
 		 moteur.regOP(14);
@@ -48,7 +48,7 @@ public class RPN_test {
 	 public void test_sub() {
 		 Invoker in = new Invoker();
 		 MoteurRPN moteur = new MoteurRPN(in);
-		 apOP minus = new Minus(moteur);
+		 ApOP minus = new Minus(moteur);
 		 in.register("Minus",minus);
 		 moteur.regOP(25);
 		 moteur.regOP(9);
@@ -62,7 +62,7 @@ public class RPN_test {
 	 public void test_mult() {
 		 Invoker in = new Invoker();
 		 MoteurRPN moteur = new MoteurRPN(in);
-		 apOP times = new Times(moteur);
+		 ApOP times = new Times(moteur);
 		 in.register("Times",times);
 		 moteur.regOP(18);
 		 moteur.regOP(5);
@@ -76,7 +76,7 @@ public class RPN_test {
 	 public void test_div() {
 		 Invoker in = new Invoker();
 		 MoteurRPN moteur = new MoteurRPN(in);
-		 apOP divide = new Divide(moteur);
+		 ApOP divide = new Divide(moteur);
 		 in.register("Divide",divide);
 		 moteur.regOP(5);
 		 moteur.regOP(60);
@@ -102,7 +102,7 @@ public class RPN_test {
 	 public void test_undo_2() {
 		 Invoker in = new Invoker();
 		 MoteurRPN moteur = new MoteurRPN(in);
-		 apOP plus = new Plus(moteur);
+		 ApOP plus = new Plus(moteur);
 		 in.register("Plus",plus);
 		 moteur.regOP(12);
 		 moteur.regOP(13);
@@ -120,10 +120,10 @@ public class RPN_test {
 		Invoker in = new Invoker();
 	    MoteurRPN moteur = new MoteurRPN(in);
 	    //SaisieRPN entry = new SaisieRPN(in,moteur);
-		apOP plus = new Plus(moteur);
-		apOP minus = new Minus(moteur);
-		apOP times = new Times(moteur);
-		apOP divide = new Divide(moteur);
+		ApOP plus = new Plus(moteur);
+		ApOP minus = new Minus(moteur);
+		ApOP times = new Times(moteur);
+		ApOP divide = new Divide(moteur);
 		in.register("Plus",plus);
 		in.register("Minus",minus);
 		in.register("Times",times);

@@ -1,24 +1,41 @@
 package fr.uvsq.poo.RPN;
 
-public class Exit implements Command{
-    private MoteurRPN mot;
+/**
+ * classe quitter.
+ */
+public class Exit implements Command {
+    /**
+     * calculette.
+     */
+    private MoteurRPN inter;
 
-    public Exit(MoteurRPN inter){
-        this.mot = inter;
+    /**
+     * Constrcuteur.
+     * @param intera calculette
+     */
+    public Exit(final MoteurRPN intera) {
+        this.inter = intera;
     }
 
+    /**
+     * execution de la commande.
+     */
     @Override
     public void execute() {
-        this.mot.exit();
+        this.inter.exit();
     }
 
-
-
-    public void undo(){}
-
+    /**
+     * modification (inutiliser).
+     * @param avr parametre modifier
+     */
     @Override
-    public void modify(String avr) {
+    public void modify(final String avr) {
+    }
 
-
+    /**
+     * annulation (inutiliser).
+     */
+    public void undo() {
     }
 }

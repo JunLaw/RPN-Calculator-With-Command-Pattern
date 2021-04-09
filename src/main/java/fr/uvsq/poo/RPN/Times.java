@@ -1,13 +1,28 @@
 package fr.uvsq.poo.RPN;
 
-public class Times extends apOP {
-    public Times(MoteurRPN mot) {
+/**
+ * Multiplication
+ * .
+ */
+public class Times extends ApOP {
+    /**
+     * Constructeur.
+     * @param mot calculette
+     */
+    public Times(final MoteurRPN mot) {
         super(mot, "*");
     }
 
+    /**
+     * Effectue Multiplication.
+     * @param nbr1 1
+     * @param nbr2 2
+     * @return resultat
+     */
     @Override
-    protected int operate(int nbr1,int nbr2) {
-        super.operate(nbr1,nbr2);
+    protected int operate(final int nbr1, final int nbr2) {
+        super.operate(nbr1, nbr2);
         return nbr1 * nbr2;
     }
+
 }
